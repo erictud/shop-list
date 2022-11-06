@@ -1,0 +1,151 @@
+.page {
+  width: 80vw;
+  margin-top: 5rem;
+  background-color: #f8f8f8;
+  border: 0.5px solid var(--color-secondary);
+  padding: 6rem 4rem;
+  box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.25);
+  border-radius: 5rem;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  margin: 6rem 0;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h4 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.input-group label {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.input-div {
+  border: 1px solid gray;
+  padding: 0.5rem 1rem;
+  padding-left: 1rem;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-group input {
+  width: 35rem;
+  height: 4rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+.input-div svg {
+  width: 2rem;
+  color: gray;
+}
+
+.form button {
+  background-color: var(--color-principal);
+  border: none;
+  border-radius: 3rem;
+  outline: none;
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.form button:hover {
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2);
+  transform: scale(1.05) translateY(-0.5rem);
+}
+
+.image-container {
+  align-self: center;
+}
+
+.image-container img {
+  width: 80rem;
+  height: 40rem;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1600px) {
+  .page {
+    width: 90vw;
+  }
+
+  .image-container img {
+    width: 60rem;
+    height: 30rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .page {
+    width: 95vw;
+    padding: 2rem 1rem;
+  }
+
+  .image-container img {
+    width: 50rem;
+    height: 25rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .page {
+    width: 95vw;
+    padding: 2rem 1rem;
+  }
+
+  .image-container {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .page {
+    margin-top: 0;
+    border-radius: 0;
+    width: 95vw;
+    padding: 2rem 1rem;
+  }
+
+  .input-group label {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-group input {
+    width: 20rem;
+    height: 3.5rem;
+  }
+}
