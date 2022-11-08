@@ -7,8 +7,13 @@ import HidePassword from "../icons/HidePassword";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
 import { useRouter } from "next/router";
+import { authState } from "../../data/authData";
+import { useRecoilState } from "recoil";
+import Modal from "react-modal";
 
 export default function AuthForm() {
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [authData, setauthData] = useRecoilState(authState);
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -32,9 +37,17 @@ export default function AuthForm() {
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        router.replace("/");
+        if (auth.currentUser) {
+          setauthData({
+            uid: auth.currentUser.uid,
+            email: auth.currentUser.email || "error",
+            username: auth.currentUser.email || "error",
+          });
+          localStorage.setItem("username", auth.currentUser.email || "");
+          router.replace("/");
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setModalIsOpen(true));
     setPassword("");
     setEmail("");
   };
@@ -98,6 +111,20 @@ export default function AuthForm() {
       <div className={styles["image-container"]}>
         <Image src="/background-auth.jpg" alt="vegetables img" width={800} height={400} />
       </div>
+      <Modal
+        className={styles.modal}
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      >
+        <div className={styles["modal-closeBtn"]}>
+          <button onClick={() => setModalIsOpen(false)}>X</button>
+        </div>
+        <ErrorIcon />
+        <div className={styles["modal-textContainer"]}>
+          <p>Something went wrong! Please try again!</p>
+          <button onClick={() => setModalIsOpen(false)}>Go to auth page</button>
+        </div>
+      </Modal>
     </div>
   );
 }

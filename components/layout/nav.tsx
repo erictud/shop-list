@@ -4,14 +4,21 @@ import { useRouter } from "next/router";
 import DarkThemeIcon from "../icons/DarkTheme";
 import styles from "./nav.module.css";
 import { app } from "../../firebase";
+import { useRecoilState } from "recoil";
+import { authState } from "../../data/authData";
 
 export default function Navigation() {
   const router = useRouter();
+  const [authData, setauthData] = useRecoilState(authState);
 
   async function LogOut() {
     const auth = getAuth(app);
     await signOut(auth);
+    setauthData({ uid: "", email: "", username: "" });
     router.replace("/auth");
+  }
+  if (!authData.email) {
+    return null;
   }
 
   return (

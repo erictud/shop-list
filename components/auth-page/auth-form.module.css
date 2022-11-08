@@ -7,8 +7,8 @@
   box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.25);
   border-radius: 5rem;
   display: flex;
-
   justify-content: space-between;
+  position: relative;
 }
 
 .container {
@@ -123,6 +123,63 @@
   height: 40rem;
   border-radius: 2rem;
   box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  width: 60vw;
+  height: 50vh;
+  background-color: honeydew;
+  border-radius: 2rem;
+}
+
+.modal-closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+}
+
+.modal-closeBtn button {
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: 900;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal-textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.modal-textContainer button {
+  border: none;
+  background-color: rosybrown;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal svg {
+  width: 15rem;
+  color: red;
 }
 
 @media (max-width: 1600px) {
