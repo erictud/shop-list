@@ -2,7 +2,6 @@ import styles from "./auth-form.module.css";
 import Image from "next/image";
 import ShowPasswordIcon from "../icons/ShowPasswordIcon";
 import { FormEvent, useRef, useState } from "react";
-import ErrorIcon from "../icons/ErrorIcon";
 import HidePassword from "../icons/HidePassword";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
@@ -10,9 +9,13 @@ import { useRouter } from "next/router";
 import { authState } from "../../data/authData";
 import { useRecoilState } from "recoil";
 import Modal from "react-modal";
+import ExclamationIcon from "../icons/ExclamationIcon";
+import ErrorIcon from "../icons/ErrorIcon";
+import Spinner from "../layout/spinner";
 
 export default function AuthForm() {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [authData, setauthData] = useRecoilState(authState);
   const router = useRouter();
   const [password, setPassword] = useState("");
@@ -22,32 +25,29 @@ export default function AuthForm() {
   const [passwordIsShown, setPasswordIsShown] = useState(false);
   const passwordInputRef = useRef<any>();
 
-  const sumbitForm = (event: FormEvent<HTMLFormElement>) => {
+  const sumbitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true);
 
-    if (!password.trim() || password.length < 7) {
-      setPasswordHasError(true);
-      return;
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setauthData({
+        uid: data.user.uid,
+        email: data.user.email,
+        username: data.user.email,
+      });
+      router.push("/");
+    } catch (err) {
+      setModalIsOpen(true);
     }
-    if (!email.trim() || !email.includes("@")) {
-      setEmailHasError(true);
-      return;
-    }
-
-    const auth = getAuth(app);
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        if (auth.currentUser) {
-          setauthData({
-            uid: auth.currentUser.uid,
-            email: auth.currentUser.email || "error",
-            username: auth.currentUser.email || "error",
-          });
-          localStorage.setItem("username", auth.currentUser.email || "");
-          router.replace("/");
-        }
-      })
-      .catch((err) => setModalIsOpen(true));
+    setIsLoading(false);
     setPassword("");
     setEmail("");
   };
@@ -72,6 +72,7 @@ export default function AuthForm() {
                   type="email"
                   id="email"
                   value={email}
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -90,6 +91,7 @@ export default function AuthForm() {
                   id="password"
                   ref={passwordInputRef}
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <div onClick={toggleVisibility}>
@@ -99,27 +101,29 @@ export default function AuthForm() {
               </div>
               {passwordHasError && (
                 <div className={styles["error-div"]}>
-                  <ErrorIcon />
+                  <ExclamationIcon />
                   <p>Invalid password!</p>
                 </div>
               )}
             </div>
           </div>
-          <button>Log in</button>
+          <button className={styles["button-div"]}>
+            Log in
+            {isLoading && <Spinner />}
+          </button>
         </form>
       </div>
-      <div className={styles["image-container"]}>
-        <Image src="/background-auth.jpg" alt="vegetables img" width={800} height={400} />
-      </div>
+
       <Modal
         className={styles.modal}
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
+        ariaHideApp={false}
       >
         <div className={styles["modal-closeBtn"]}>
           <button onClick={() => setModalIsOpen(false)}>X</button>
         </div>
-        <ErrorIcon />
+        <ExclamationIcon />
         <div className={styles["modal-textContainer"]}>
           <p>Something went wrong! Please try again!</p>
           <button onClick={() => setModalIsOpen(false)}>Go to auth page</button>

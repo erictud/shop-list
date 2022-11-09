@@ -1,7 +1,9 @@
+import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { authState } from "../data/authData";
+import { app } from "../firebase";
 
 export default function Home() {
   const router = useRouter();
@@ -16,11 +18,13 @@ export default function Home() {
   if (!authData.email) {
     return null;
   }
-  return <div></div>;
+  return <div>hello</div>;
 }
 
 // export async function getServerSideProps(context: any) {
-//   if (true) {
+//   const auth = getAuth(app);
+//   console.log(auth.currentUser);
+//   if (auth.currentUser) {
 //     return {
 //       redirect: {
 //         destination: "/auth",
