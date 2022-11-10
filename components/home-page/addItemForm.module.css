@@ -1,0 +1,123 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.input-group label {
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.input-group input,
+.input-group textarea {
+  border: 2px solid var(--color-principal);
+  background-color: transparent;
+  width: 50rem;
+  font-size: 2rem;
+  outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.input-group textarea {
+  max-width: 50rem;
+  min-width: 50rem;
+}
+
+.input-group input {
+  height: 4rem;
+}
+
+.upload-img {
+  display: none;
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group svg {
+  width: 4rem;
+  height: 6rem;
+  color: var(--color-principal);
+}
+
+.button-group button {
+  padding: 1rem 2rem;
+  border: none;
+  outline: none;
+  background-color: var(--color-principal);
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.button-group button:hover {
+  transform: scale(1.05) translateY(-0.5rem);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.button-group button:active {
+  transform: scale(1.05) translateY(0rem);
+  box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 4rem 1rem;
+  }
+  .input-group input,
+  .input-group textarea {
+    width: 30rem;
+  }
+  .input-group textarea {
+    max-width: 30rem;
+    min-width: 30rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  .input-group input,
+  .input-group textarea {
+    width: 22rem;
+  }
+  .input-group textarea {
+    max-width: 22rem;
+    min-width: 22rem;
+  }
+
+  .button-group svg {
+    width: 2.5rem;
+    height: 4.5rem;
+  }
+}

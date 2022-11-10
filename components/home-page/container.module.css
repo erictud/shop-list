@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 1%;
+  width: 7rem;
+  height: 7rem;
+  color: var(--color-principal);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(42, 157, 143, 0.1);
+  border-radius: 100%;
+  border: 1px solid rgb(173, 173, 173);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4rem 5rem;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)),
+    url("/cart.jpg");
+  background-position: center;
+  outline: none;
+}
+
+.close-btn {
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  border: none;
+  background-color: transparent;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 100%;
+  background-color: rgb(128, 128, 128, 0.25);
+  outline: none;
+}
+
+.close-btn:focus {
+  outline: none;
+}

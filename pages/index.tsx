@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { authState } from "../data/authData";
 import { app } from "../firebase";
+import AddItemForm from "../components/home-page/addItemForm";
+import Container from "../components/home-page/container";
 
 export default function Home() {
   const router = useRouter();
@@ -18,21 +20,9 @@ export default function Home() {
   if (!authData.email) {
     return null;
   }
-  return <div>hello</div>;
+  return (
+    <main>
+      <Container />
+    </main>
+  );
 }
-
-// export async function getServerSideProps(context: any) {
-//   const auth = getAuth(app);
-//   console.log(auth.currentUser);
-//   if (auth.currentUser) {
-//     return {
-//       redirect: {
-//         destination: "/auth",
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {},
-//   };
-// }
