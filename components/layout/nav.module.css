@@ -42,7 +42,7 @@
 }
 
 .nav-list {
-  width: 30rem;
+  width: 18rem;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -71,7 +71,7 @@
   }
 
   .nav-list {
-    width: 20rem;
+    width: 15rem;
   }
 
   .nav-item {
@@ -88,7 +88,7 @@
     gap: 0.5rem;
   }
   .nav-list {
-    width: 15rem;
+    width: 12rem;
   }
 
   .nav-item {

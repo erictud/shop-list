@@ -1,0 +1,41 @@
+.div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: monospace;
+}
+
+.div h3 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  color: var(--color-principal);
+}
+
+.div h4 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .div {
+    margin: 1rem 1rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .div h4,
+  .div h3 {
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .div {
+    align-items: center;
+  }
+}

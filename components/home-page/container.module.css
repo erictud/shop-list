@@ -1,5 +1,6 @@
 .container {
   position: relative;
+  margin: 1rem 2rem;
 }
 
 .add-btn {
@@ -50,4 +51,10 @@
 
 .close-btn:focus {
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem 1rem;
+  }
 }

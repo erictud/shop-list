@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
   padding: 5rem;
+  padding-top: 15rem;
+  overflow-x: scroll;
+  max-height: 90vh;
 }
 
 .form {
@@ -50,10 +53,6 @@
   height: 4rem;
 }
 
-.upload-img {
-  display: none;
-}
-
 .button-group {
   width: 100%;
   display: flex;
@@ -62,6 +61,7 @@
 }
 
 .button-group svg {
+  cursor: pointer;
   width: 4rem;
   height: 6rem;
   color: var(--color-principal);
@@ -89,6 +89,24 @@
   box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.25);
 }
 
+.selectedFile-div {
+  position: relative;
+}
+
+.selectedFile-div span {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.selectedFile-div img {
+  width: 100%;
+  height: 40rem;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 4rem 1rem;
@@ -100,6 +118,11 @@
   .input-group textarea {
     max-width: 30rem;
     min-width: 30rem;
+  }
+
+  .selectedFile-div img {
+    width: 100%;
+    height: 25rem;
   }
 }
 
@@ -119,5 +142,10 @@
   .button-group svg {
     width: 2.5rem;
     height: 4.5rem;
+  }
+
+  .selectedFile-div img {
+    width: 100%;
+    height: 20rem;
   }
 }

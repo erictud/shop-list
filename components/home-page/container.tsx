@@ -4,6 +4,8 @@ import AddItemIcon from "../icons/AddItemIcon";
 import AddItemForm from "./addItemForm";
 import styles from "./container.module.css";
 import Modal from "react-modal";
+import PageHeader from "./pageHeader";
+import ItemsList from "./itemsList";
 
 export default function Container() {
   const [modal, setModalState] = useRecoilState(modalState);
@@ -23,6 +25,8 @@ export default function Container() {
       <button className={styles["add-btn"]} onClick={() => setModalState(true)}>
         <AddItemIcon />
       </button>
+      <PageHeader />
+      <ItemsList />
     </div>
   );
 }

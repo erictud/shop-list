@@ -33,9 +33,7 @@ export default function Navigation() {
           <li className={styles["nav-item"]}>
             <Link href="/">Lista</Link>
           </li>
-          <li className={styles["nav-item"]}>
-            <Link href="/">Account</Link>
-          </li>
+
           <li className={`${styles["nav-item"]} ${styles.active}`} onClick={LogOut}>
             <Link href="/">Log out</Link>
           </li>
