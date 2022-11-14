@@ -57,4 +57,9 @@
   .container {
     margin: 1rem 1rem;
   }
+
+  .add-btn {
+    width: 6rem;
+    height: 6rem;
+  }
 }

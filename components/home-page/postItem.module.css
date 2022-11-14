@@ -1,0 +1,68 @@
+.post {
+  padding: 1rem;
+  position: relative;
+  max-width: 40rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(126, 126, 126);
+  margin-bottom: 2rem;
+}
+
+.header h5 {
+  font-size: 1.4rem;
+}
+
+.header h6 {
+  font-size: 1.3rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.body h3 {
+  font-size: 2rem;
+}
+
+.body p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img img {
+  width: 12rem;
+  height: auto;
+}
+
+.btn {
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+  cursor: pointer;
+}
+
+.btn svg {
+  width: 2rem;
+  color: red;
+  transition: all 0.3s ease;
+}
+
+.btn svg:hover {
+  transform: translate(1.1);
+}

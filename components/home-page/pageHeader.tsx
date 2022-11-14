@@ -2,7 +2,7 @@ import styles from "./pageHeader.module.css";
 
 export default function PageHeader() {
   const date = new Date();
-  const options: DateTimeFormatOptions = {
+  const options: any = {
     hour: `numeric`,
     minute: `numeric`,
     day: `numeric`,

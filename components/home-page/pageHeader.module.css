@@ -3,8 +3,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   font-family: monospace;
+  padding-bottom: 4rem;
+  margin-bottom: 0;
 }
 
 .div h3 {

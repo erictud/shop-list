@@ -1,5 +1,6 @@
 import styles from "./itemsList.module.css";
 import Image from "next/image";
+import PostItem from "./postItem";
 
 export default function ItemsList() {
   return (
@@ -9,6 +10,7 @@ export default function ItemsList() {
           <Image src="/megaImageLogo.png" alt="mega image Logo" width={30} height={30} />
           <h5>Mega Image</h5>
         </div>
+        <PostItem />
       </section>
 
       <section className={styles["shop-list"]}>
@@ -16,13 +18,15 @@ export default function ItemsList() {
           <Image src="/kauflandLogo.png" alt="mega image Logo" width={30} height={30} />
           <h5>Kaufland</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
         <div className={styles["shop-list-header"]}>
-          <Image src="/lidlLogo.png" alt="lidl Logo" width={50} height={30} />
+          <Image src="/lidlLogo.png" alt="lidl Logo" width={30} height={30} />
           <h5>Lidl</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
@@ -30,6 +34,7 @@ export default function ItemsList() {
           <Image src="/farmaciateiLogo.png" alt="mega image Logo" width={30} height={30} />
           <h5>Farmacia Tei</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
@@ -37,6 +42,7 @@ export default function ItemsList() {
           <Image src="/piataLogo.png" alt="mega image Logo" width={30} height={30} />
           <h5>Piata</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
@@ -44,6 +50,7 @@ export default function ItemsList() {
           <Image src="/coraLogo.png" alt="lidl Logo" width={50} height={30} />
           <h5>Cora</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
@@ -51,12 +58,14 @@ export default function ItemsList() {
           <Image src="/carefourLogo.png" alt="mega image Logo" width={30} height={30} />
           <h5>Carefour</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
 
       <section className={styles["shop-list"]}>
         <div className={styles["shop-list-header"]}>
           <h5>Altele</h5>
         </div>
+        <p>Nu exista produse in aceasta categorie!</p>
       </section>
     </div>
   );
