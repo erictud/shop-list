@@ -16,6 +16,9 @@ type ReqBody = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResBody>) {
   if (req.method === "POST") {
     const { email, password } = req.body;
+    if (!email.trim() || !password.trim()) {
+      res.status(400).json({ message: "Invalid Inputs", user: null });
+    }
     const auth = getAuth(app);
     try {
       await signInWithEmailAndPassword(auth, email, password);
