@@ -21,6 +21,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       res.status(400).json({ message: "Invalid quantity" });
     } else if (!body.name.trim()) {
       res.status(400).json({ message: "Invalid name" });
+    } else if (!body.shop.trim()) {
+      res.status(400).json({ message: "Invalid shop" });
     }
 
     const docRef = await addDoc(collection(db, "items"), {
@@ -28,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       quantity: body.quantity,
       description: body.description,
       username: body.username,
+      shop: body.shop,
       time: serverTimestamp(),
     });
     const id = docRef.id;

@@ -31,12 +31,18 @@
 }
 
 .input-group input,
+.input-group select,
 .input-group textarea {
   border: 2px solid var(--color-principal);
   background-color: transparent;
   width: 50rem;
   font-size: 2rem;
   outline: none;
+}
+
+.input-group select {
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .input-group input:focus,
@@ -112,7 +118,8 @@
     padding: 4rem 1rem;
   }
   .input-group input,
-  .input-group textarea {
+  .input-group textarea,
+  .input-group select {
     width: 30rem;
   }
   .input-group textarea {
@@ -131,7 +138,8 @@
     padding: 2rem 1rem;
   }
   .input-group input,
-  .input-group textarea {
+  .input-group textarea,
+  .input-group select {
     width: 22rem;
   }
   .input-group textarea {

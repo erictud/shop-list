@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { authState } from "../../data/authData";
 import { modalState } from "../../data/modalData";
@@ -13,6 +13,10 @@ export default function AddItemForm() {
   const [inputName, setInputName] = useState<string | "">("");
   const [inputQuantity, setInputQuantity] = useState<string | "">("");
   const [inputDescription, setInputDescription] = useState<string | "">("");
+  const [inputShop, setInputShop] = useState<string | "">("");
+  useEffect(() => {
+    setInputShop("lidl");
+  }, [setInputShop]);
 
   const addImageToPost = (e: any) => {
     const reader = new FileReader();
@@ -27,7 +31,9 @@ export default function AddItemForm() {
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!inputName.trim()) return;
+    console.log(inputShop);
     if (!inputQuantity.trim()) return;
+    if (!inputShop.trim()) return;
 
     if (selectedFile == null) setSelectedFile(null);
     const req = await fetch("/api/senditem", {
@@ -37,6 +43,7 @@ export default function AddItemForm() {
         quantity: inputQuantity,
         description: inputDescription,
         image: selectedFile,
+        shop: inputShop,
         username: "",
       }),
       headers: {
@@ -44,6 +51,7 @@ export default function AddItemForm() {
       },
     });
     const data = await req.json();
+    console.log(data);
     // if(!req.ok) //do something
     setSelectedFile(null);
     setInputName("");
@@ -62,6 +70,25 @@ export default function AddItemForm() {
         <div className={styles["input-group"]}>
           <label htmlFor="quantity">Cantitate</label>
           <input type="text" id="quantity" onChange={(e) => setInputQuantity(e.target.value)} />
+        </div>
+        <div className={styles["input-group"]}>
+          <label htmlFor="shop">Magazin</label>
+          <select
+            name="shop"
+            id="shop"
+            onChange={(e) => {
+              setInputShop(e.target.value);
+            }}
+          >
+            <option value="lidl">Lidl</option>
+            <option value="kaufland">kaufland</option>
+            <option value="megaimage">mega image</option>
+            <option value="farmacia">farmacia tei</option>
+            <option value="piata">piata</option>
+            <option value="cora">cora</option>
+            <option value="carefour">carefour</option>
+            <option value="altele">altele</option>
+          </select>
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="details">Detalii</label>
