@@ -1,9 +1,10 @@
 .post {
   padding: 1rem;
+  margin: 2rem 0;
   position: relative;
   max-width: 40rem;
-  border: 1px solid black;
   border-radius: 1rem;
+  min-width: 25rem;
 }
 
 .header {
@@ -46,8 +47,8 @@
 }
 
 .img img {
-  width: 12rem;
-  height: auto;
+  max-width: 10rem;
+  max-height: 20rem;
 }
 
 .btn {

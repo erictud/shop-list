@@ -5,7 +5,8 @@ import AddItemForm from "./addItemForm";
 import styles from "./container.module.css";
 import Modal from "react-modal";
 import PageHeader from "./pageHeader";
-import ItemsList from "./itemsList";
+import ItemsList from "./items-list/itemsList";
+import ButtonRow from "./items-list/buttons-row";
 
 export default function Container() {
   const [modal, setModalState] = useRecoilState(modalState);
