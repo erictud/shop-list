@@ -7,8 +7,7 @@ type Props = {
 };
 
 export default function ButtonRow(props: Props) {
-  const [_, setActiveShop] = useRecoilState(listState);
-  const activeBtn = props.active;
+  const [activeBtn, setActiveShop] = useRecoilState(listState);
   return (
     <div className={styles.container}>
       <button

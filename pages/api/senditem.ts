@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       description: body.description,
       username: body.username,
       shop: body.shop,
-      time: serverTimestamp(),
+      time: body.data,
     });
     const id = docRef.id;
     const imageRef = ref(storage, `items/${docRef.id}/image`);

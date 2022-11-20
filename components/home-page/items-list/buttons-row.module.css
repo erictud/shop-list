@@ -12,6 +12,7 @@
   border: 1px solid black;
   cursor: pointer;
   transition: all 0.2s ease;
+  border: 2px solid var(--color-principal);
 }
 
 .container button:hover {

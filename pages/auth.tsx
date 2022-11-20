@@ -6,6 +6,7 @@ export default function Auth() {
   return (
     <main
       style={{
+        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

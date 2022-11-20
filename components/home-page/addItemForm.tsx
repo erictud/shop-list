@@ -3,33 +3,26 @@ import { useRecoilState } from "recoil";
 import { authState } from "../../data/authData";
 import { modalState } from "../../data/modalData";
 import ImageIcon from "../icons/ImageIcon";
+import Spinner from "../layout/spinner";
 import styles from "./addItemForm.module.css";
 
 export default function AddItemForm() {
-  const [userData, setUserData] = useRecoilState(authState);
   const [_, setModalData] = useRecoilState(modalState);
-  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
   const filePickerRef = useRef(null);
   const [inputName, setInputName] = useState<string | "">("");
   const [inputQuantity, setInputQuantity] = useState<string | "">("");
   const [inputDescription, setInputDescription] = useState<string | "">("");
   const [inputShop, setInputShop] = useState<string | "">("");
+
   useEffect(() => {
     setInputShop("lidl");
   }, [setInputShop]);
 
-  const addImageToPost = (e: any) => {
-    const reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-
-    reader.onload = (readerEvent) => {
-      setSelectedFile(readerEvent.target.result);
-    };
-  };
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     if (!inputName.trim()) return;
     console.log(inputShop);
     if (!inputQuantity.trim()) return;
@@ -44,6 +37,7 @@ export default function AddItemForm() {
         description: inputDescription,
         image: selectedFile,
         shop: inputShop,
+        data: new Date().toString(),
         username: "",
       }),
       headers: {
@@ -58,8 +52,19 @@ export default function AddItemForm() {
     setInputDescription("");
     setInputQuantity("");
     setModalData(false);
+    setLoading(false);
   };
 
+  const addImageToPost = (e: any) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    reader.onload = (readerEvent: any) => {
+      setSelectedFile(readerEvent.target.result);
+    };
+  };
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={submitForm}>
@@ -105,7 +110,14 @@ export default function AddItemForm() {
           </div>
         )}
         <div className={styles["button-group"]}>
-          <button>Adauga produs</button>
+          <button>
+            {loading && (
+              <span>
+                <Spinner />
+              </span>
+            )}
+            {!loading && <span>Adauga produs</span>}
+          </button>
           <div onClick={() => filePickerRef.current.click()}>
             <div className={styles["upload-img"]}>
               <input type="file" onChange={addImageToPost} hidden ref={filePickerRef} />
