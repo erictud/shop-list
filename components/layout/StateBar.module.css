@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
+  padding: 1rem;
+  background-color: tan;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.container p {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-box svg {
+  width: 3rem;
+  color: white;
+}

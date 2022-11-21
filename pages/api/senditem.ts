@@ -17,12 +17,15 @@ type ReqBody = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResBody>) {
   if (req.method === "POST") {
     const body = req.body;
-    if (!body.quantity.trim()) {
+    if (body.quantity.trim().length === 0) {
       res.status(400).json({ message: "Invalid quantity" });
-    } else if (!body.name.trim()) {
+      return;
+    } else if (body.name.trim().length === 0) {
       res.status(400).json({ message: "Invalid name" });
-    } else if (!body.shop.trim()) {
+      return;
+    } else if (body.shop.trim().length === 0) {
       res.status(400).json({ message: "Invalid shop" });
+      return;
     }
 
     const docRef = await addDoc(collection(db, "items"), {

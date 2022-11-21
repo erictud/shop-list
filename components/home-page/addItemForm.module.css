@@ -59,6 +59,22 @@
   height: 4rem;
 }
 
+.error-div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: red;
+}
+
+.error-div svg {
+  width: 2rem;
+}
+
+.error-div p {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
 .button-group {
   width: 100%;
   display: flex;

@@ -6,10 +6,13 @@ import styles from "./container.module.css";
 import Modal from "react-modal";
 import PageHeader from "./pageHeader";
 import ItemsList from "./items-list/itemsList";
-import ButtonRow from "./items-list/buttons-row";
+import StateBar from "../layout/StateBar";
+import { stateBar } from "../../data/stateData";
 
 export default function Container() {
   const [modal, setModalState] = useRecoilState(modalState);
+  const [stateBarVal, _] = useRecoilState(stateBar);
+
   return (
     <div className={styles.container}>
       <Modal
@@ -28,6 +31,7 @@ export default function Container() {
       </button>
       <PageHeader />
       <ItemsList />
+      {stateBarVal && <StateBar state={stateBarVal} />}
     </div>
   );
 }

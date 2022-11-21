@@ -1,20 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { authState } from "../../data/authData";
 import { modalState } from "../../data/modalData";
+import { stateBar } from "../../data/stateData";
+import ErrorIcon from "../icons/ErrorIcon";
 import ImageIcon from "../icons/ImageIcon";
 import Spinner from "../layout/spinner";
 import styles from "./addItemForm.module.css";
 
 export default function AddItemForm() {
+  const filePickerRef = useRef(null);
   const [_, setModalData] = useRecoilState(modalState);
+  const [__, setStateBarVal] = useRecoilState(stateBar);
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const filePickerRef = useRef(null);
   const [inputName, setInputName] = useState<string | "">("");
   const [inputQuantity, setInputQuantity] = useState<string | "">("");
   const [inputDescription, setInputDescription] = useState<string | "">("");
   const [inputShop, setInputShop] = useState<string | "">("");
+  const [nameHasError, setNameHasError] = useState(false);
+  const [quantityHasError, setQuantityHasError] = useState(false);
 
   useEffect(() => {
     setInputShop("lidl");
@@ -23,11 +27,21 @@ export default function AddItemForm() {
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    if (!inputName.trim()) return;
+    setStateBarVal("loading");
+    if (!inputName.trim()) {
+      setNameHasError(true);
+      setLoading(false);
+      return;
+    }
     console.log(inputShop);
-    if (!inputQuantity.trim()) return;
+    if (!inputQuantity.trim()) {
+      setQuantityHasError(true);
+      setLoading(false);
+      return;
+    }
     if (!inputShop.trim()) return;
-
+    setNameHasError(false);
+    setQuantityHasError(false);
     if (selectedFile == null) setSelectedFile(null);
     const req = await fetch("/api/senditem", {
       method: "POST",
@@ -44,13 +58,22 @@ export default function AddItemForm() {
         "Content-Type": "application/json",
       },
     });
+    if (!req.ok) {
+      setSelectedFile(null);
+      setInputName("");
+      setInputDescription("");
+      setInputQuantity("");
+      setStateBarVal("error");
+      setModalData(false);
+      setLoading(false);
+      return;
+    }
     const data = await req.json();
-    console.log(data);
-    // if(!req.ok) //do something
     setSelectedFile(null);
     setInputName("");
     setInputDescription("");
     setInputQuantity("");
+    setStateBarVal("success");
     setModalData(false);
     setLoading(false);
   };
@@ -71,10 +94,22 @@ export default function AddItemForm() {
         <div className={styles["input-group"]}>
           <label htmlFor="name">Nume produs</label>
           <input type="text" id="name" onChange={(e) => setInputName(e.target.value)} />
+          {nameHasError && (
+            <div className={styles["error-div"]}>
+              <ErrorIcon />
+              <p>Email invalid!</p>
+            </div>
+          )}
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="quantity">Cantitate</label>
           <input type="text" id="quantity" onChange={(e) => setInputQuantity(e.target.value)} />
+          {quantityHasError && (
+            <div className={styles["error-div"]}>
+              <ErrorIcon />
+              <p>Email invalid!</p>
+            </div>
+          )}
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="shop">Magazin</label>

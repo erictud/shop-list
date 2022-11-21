@@ -79,7 +79,7 @@ export default function AuthForm() {
               {emailHasError && (
                 <div className={styles["error-div"]}>
                   <ErrorIcon />
-                  <p>Invalid email!</p>
+                  <p>Email invalid!</p>
                 </div>
               )}
             </div>
@@ -102,7 +102,7 @@ export default function AuthForm() {
               {passwordHasError && (
                 <div className={styles["error-div"]}>
                   <ExclamationIcon />
-                  <p>Invalid password!</p>
+                  <p>Parola invalida!</p>
                 </div>
               )}
             </div>
