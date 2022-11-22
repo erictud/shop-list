@@ -62,6 +62,7 @@ export default function AddItemForm() {
       },
     });
     if (!req.ok) {
+      console.log(req);
       setSelectedFile(null);
       setInputName("");
       setInputDescription("");
@@ -158,7 +159,13 @@ export default function AddItemForm() {
           </button>
           <div onClick={() => filePickerRef.current.click()}>
             <div className={styles["upload-img"]}>
-              <input type="file" onChange={addImageToPost} hidden ref={filePickerRef} />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={addImageToPost}
+                hidden
+                ref={filePickerRef}
+              />
             </div>
             <ImageIcon />
           </div>
