@@ -157,7 +157,7 @@ export default function AddItemForm() {
             )}
             {!loading && <span>Adauga produs</span>}
           </button>
-          <div onClick={() => filePickerRef.current.click()}>
+          {/* <div onClick={() => filePickerRef.current.click()}>
             <div className={styles["upload-img"]}>
               <input
                 type="file"
@@ -168,7 +168,7 @@ export default function AddItemForm() {
               />
             </div>
             <ImageIcon />
-          </div>
+          </div> */}
         </div>
       </form>
     </div>

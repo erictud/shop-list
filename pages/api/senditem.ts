@@ -1,5 +1,5 @@
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes, uploadString } from "firebase/storage";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { db, storage } from "../../firebase";
 
