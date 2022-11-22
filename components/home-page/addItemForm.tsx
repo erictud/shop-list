@@ -10,7 +10,7 @@ import Spinner from "../layout/spinner";
 import styles from "./addItemForm.module.css";
 
 export default function AddItemForm() {
-  const filePickerRef = useRef(null);
+  const filePickerRef = useRef<any>(null);
   const [_, setModalData] = useRecoilState(modalState);
   const [__, setStateBarVal] = useRecoilState(stateBar);
   const [authData, ___] = useRecoilState(authState);
