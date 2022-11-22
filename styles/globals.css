@@ -5,6 +5,19 @@
   --color-principal: #2a9d8f;
   --color-secondary: #ccd5ae;
   --color-tertiary: #faedcd;
+  --color-black: #000;
+  --color-gradient-1: rgba(255, 255, 255, 0.6);
+  --color-gradient-2: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] {
+  --background-color: #0d1b2a;
+  --color-principal: #ffc300;
+  --color-secondary: #ccd5ae;
+  --color-tertiary: #faedcd;
+  --color-black: #fff;
+  --color-gradient-1: rgba(0, 0, 0, 0.8);
+  --color-gradient-2: rgba(0, 0, 0, 0.6);
 }
 
 html,

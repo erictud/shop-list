@@ -27,7 +27,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 4rem 5rem;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)),
+  background: linear-gradient(45deg, var(--color-gradient-1), var(--color-gradient-2)),
     url("/cart.jpg");
   background-position: center;
   outline: none;
@@ -47,6 +47,7 @@
   border-radius: 100%;
   background-color: rgb(128, 128, 128, 0.25);
   outline: none;
+  color: var(--color-black);
 }
 
 .close-btn:focus {

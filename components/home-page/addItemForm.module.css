@@ -7,6 +7,7 @@
   padding-top: 15rem;
   overflow-x: scroll;
   max-height: 90vh;
+  color: var(--color-black);
 }
 
 .form {
@@ -33,6 +34,7 @@
 .input-group input,
 .input-group select,
 .input-group textarea {
+  color: var(--color-black);
   border: 2px solid var(--color-principal);
   background-color: transparent;
   width: 50rem;
@@ -96,7 +98,7 @@
   border: none;
   outline: none;
   background-color: var(--color-principal);
-  color: white;
+  color: var(--color-black);
   font-size: 1.5rem;
   border-radius: 1.5rem;
   cursor: pointer;

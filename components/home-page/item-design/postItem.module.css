@@ -4,6 +4,7 @@
   padding: 1rem 2rem;
   border: 1px solid rgba(100, 100, 100);
   margin: 2rem 0;
+  color: var(--color-black);
 }
 
 .post-header {
@@ -30,11 +31,13 @@
 
 .post-general-info h4 {
   font-size: 1.75rem;
+  color: var(--color-black);
 }
 
 .post-general-info p {
   font-size: 1.4rem;
   text-transform: uppercase;
+  color: var(--color-black);
 }
 
 .post-more-info {

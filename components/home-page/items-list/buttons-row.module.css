@@ -17,7 +17,7 @@
 
 .container button:hover {
   transform: scale(1.05);
-  border: 2px solid teal;
+  border: 2px solid var(--color-principal);
   background-color: rgb(42, 157, 143, 0.8);
 }
 

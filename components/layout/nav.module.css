@@ -6,6 +6,7 @@
   justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: 3px solid var(--color-secondary);
+  color: var(--color-black);
 }
 
 .logo-container {
@@ -40,6 +41,7 @@
 
 .container:hover svg {
   transform: scale(1.1);
+  color: var(--color-black);
 }
 
 .nav-list {

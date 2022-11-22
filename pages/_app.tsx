@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <Head>
         <title>Lista de cumparaturi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout>
         <Component {...pageProps} />

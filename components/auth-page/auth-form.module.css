@@ -1,6 +1,6 @@
 .page {
   margin-top: 5rem;
-  background-color: rgba(241, 250, 238, 0.4);
+  color: var(--color-black);
   border: 0.5px solid var(--color-secondary);
   padding: 4rem 8rem;
   box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.25);
@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)),
+  background: linear-gradient(45deg, var(--color-gradient-1), var(--color-gradient-1)),
     url("/background-auth.jpg");
   background-position: center center;
 }
@@ -50,7 +50,7 @@
 }
 
 .input-div {
-  border: 1px solid gray;
+  border: 1px solid var(--color-black);
   padding: 0.5rem 1rem;
   padding-left: 1rem;
   border-radius: 3rem;
@@ -59,6 +59,7 @@
 }
 
 .input-group input {
+  color: var(--color-black);
   width: 35rem;
   height: 4rem;
   background-color: transparent;
@@ -74,7 +75,7 @@
 .input-div svg {
   cursor: pointer;
   width: 2rem;
-  color: gray;
+  color: var(--color-black);
   transition: all 0.3s ease;
 }
 

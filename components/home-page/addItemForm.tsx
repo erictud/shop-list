@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
+import { authState } from "../../data/authData";
 import { modalState } from "../../data/modalData";
 import { stateBar } from "../../data/stateData";
+import { determineUser } from "../../lib/auth";
 import ErrorIcon from "../icons/ErrorIcon";
 import ImageIcon from "../icons/ImageIcon";
 import Spinner from "../layout/spinner";
@@ -11,6 +13,7 @@ export default function AddItemForm() {
   const filePickerRef = useRef(null);
   const [_, setModalData] = useRecoilState(modalState);
   const [__, setStateBarVal] = useRecoilState(stateBar);
+  const [authData, ___] = useRecoilState(authState);
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [inputName, setInputName] = useState<string | "">("");
@@ -33,7 +36,6 @@ export default function AddItemForm() {
       setLoading(false);
       return;
     }
-    console.log(inputShop);
     if (!inputQuantity.trim()) {
       setQuantityHasError(true);
       setLoading(false);
@@ -43,6 +45,7 @@ export default function AddItemForm() {
     setNameHasError(false);
     setQuantityHasError(false);
     if (selectedFile == null) setSelectedFile(null);
+    const username = determineUser(authData.email);
     const req = await fetch("/api/senditem", {
       method: "POST",
       body: JSON.stringify({
@@ -52,7 +55,7 @@ export default function AddItemForm() {
         image: selectedFile,
         shop: inputShop,
         data: new Date().toString(),
-        username: "",
+        username,
       }),
       headers: {
         "Content-Type": "application/json",

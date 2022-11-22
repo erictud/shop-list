@@ -21,7 +21,7 @@ export default function PostItem(props: any) {
   return (
     <div className={styles.post}>
       <div className={styles["post-header"]}>
-        <p>{username} siiu</p>
+        <p>{username} </p>
         <p>
           <Moment fromNow>{new Date(time)}</Moment>
         </p>

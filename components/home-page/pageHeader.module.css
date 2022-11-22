@@ -18,6 +18,7 @@
 .div h4 {
   font-size: 1.6rem;
   font-weight: 400;
+  color: var(--color-black);
 }
 
 @media (max-width: 768px) {
