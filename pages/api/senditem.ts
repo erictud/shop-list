@@ -46,7 +46,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         });
       });
     }
-
     res.status(201).json({ message: "Item sent successfully" });
   } else {
     res.status(404).json({ message: "Access denied" });

@@ -162,7 +162,6 @@ export default function AddItemForm() {
               <input
                 type="file"
                 accept="image/*"
-                capture="user"
                 onChange={addImageToPost}
                 hidden
                 ref={filePickerRef}
